@@ -15,5 +15,6 @@ Configure the application in $HOME/.config/endocode/wall-display.conf:
         urls = http://endocode.com, http://heise.de
         interval = 25
 
-```urls``` comma separated list of urls
-```interval``` in seconds
+```urls```: A comma separated list of urls to show.
+
+```interval```: How many seconds every url should be displayed.
