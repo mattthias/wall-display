@@ -12,13 +12,13 @@ WallDisplay::WallDisplay(QWidget *parent) :
 
     QSettings settings;
     urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
-    changeUrlInterval = settings.value("wall-display/interval", 10000 ).toInt();
+    changeUrlInterval = settings.value("wall-display/interval", 10).toInt();
 
     ui->webView->setUrl(QUrl(urls[0]));
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(changeUrl()));
-    timer->start(changeUrlInterval);
+    timer->start(changeUrlInterval * 1000);
 }
 
 WallDisplay::~WallDisplay()
