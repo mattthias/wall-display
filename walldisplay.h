@@ -5,7 +5,8 @@
 #include <QTimer>
 #include <QUrl>
 #include <QSettings>
-
+#include <QDebug>
+#include <QKeyEvent>
 
 namespace Ui {
 class WallDisplay;
@@ -24,6 +25,11 @@ private:
 
 private Q_SLOTS:
     void changeUrl();
+    void stopInterval();
+    void startInterval();
+
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
 };
 
 #endif // WALLDISPLAY_H
