@@ -6,6 +6,7 @@ WallDisplaySettings::WallDisplaySettings(QWidget *parent) :
     ui(new Ui::WallDisplaySettings)
 {
     ui->setupUi(this);
+
 }
 
 WallDisplaySettings::~WallDisplaySettings()

@@ -27,6 +27,8 @@ private Q_SLOTS:
     void changeUrl();
     void stopInterval();
     void startInterval();
+    void showSettingsDialog();
+    void showAbout();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

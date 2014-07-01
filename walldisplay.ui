@@ -85,7 +85,7 @@
   </widget>
   <action name="action_settings">
    <property name="enabled">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>&amp;Settings</string>

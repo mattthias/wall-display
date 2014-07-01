@@ -2,6 +2,8 @@
 #define WALLDISPLAYSETTINGS_H
 
 #include <QDialog>
+#include <QMessageBox>
+
 
 namespace Ui {
 class WallDisplaySettings;
@@ -17,6 +19,7 @@ public:
 
 private:
     Ui::WallDisplaySettings *ui;
+
 };
 
 #endif // WALLDISPLAYSETTINGS_H

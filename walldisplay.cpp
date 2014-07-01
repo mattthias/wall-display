@@ -1,5 +1,7 @@
 #include "walldisplay.h"
 #include "ui_walldisplay.h"
+#include "walldisplaysettings.h"
+#include "ui_walldisplaysettings.h"
 
 QList<QString> urls;
 int changeUrlInterval;
@@ -21,6 +23,10 @@ WallDisplay::WallDisplay(QWidget *parent) :
     connect(ui->actionStart_interval, SIGNAL(triggered()), this, SLOT(startInterval()));
     connect(ui->actionS_top_interval, SIGNAL(triggered()), this, SLOT(stopInterval()));
 
+    /* wire up the settings and about dialog */
+    connect(ui->action_Info, SIGNAL(triggered()), this, SLOT(showAbout()));
+    connect(ui->action_settings, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
+
     /* read urls and cycle interval from the settings file */
     QSettings settings;
     urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
@@ -32,6 +38,8 @@ WallDisplay::WallDisplay(QWidget *parent) :
     /* start the timer with interval */
     connect(timer, SIGNAL(timeout()), this, SLOT(changeUrl()));
     timer->start(changeUrlInterval * 1000);
+
+
 }
 
 WallDisplay::~WallDisplay()
@@ -79,3 +87,15 @@ bool WallDisplay::eventFilter(QObject *obj, QEvent *event) {
     return QMainWindow::eventFilter(obj, event);
 }
 
+
+void WallDisplay::showAbout(){
+    QMessageBox::about(this, tr("About wall-display"),
+                 tr("Wall-Display\n"
+                    "Written by Matthias Schmitz <matthias@sigxcpu.org"));
+}
+
+void WallDisplay::showSettingsDialog() {
+    qDebug() << "showSettingsDialog aufgerufen";
+    WallDisplaySettings *settingsdialog = new WallDisplaySettings;
+    settingsdialog->exec();
+}

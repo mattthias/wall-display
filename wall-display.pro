@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        walldisplay.cpp
+        walldisplay.cpp \
+    walldisplaysettings.cpp
 
-HEADERS  += walldisplay.h
+HEADERS  += walldisplay.h \
+    walldisplaysettings.h
 
-FORMS    += walldisplay.ui
+FORMS    += walldisplay.ui \
+    walldisplaysettings.ui
