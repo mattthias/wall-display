@@ -21,3 +21,6 @@ HEADERS  += walldisplay.h \
 
 FORMS    += walldisplay.ui \
     walldisplaysettings.ui
+
+RESOURCES += \
+    resources.qrc
