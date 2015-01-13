@@ -57,6 +57,9 @@ void WallDisplaySettings::on_buttonBox_accepted()
     for(int i = 0; i < listWidget->count(); ++i) {
         urls << listWidget->item(i)->text();
     }
+    if ( urls.isEmpty() ) {
+        urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
+    }
     settings.setValue("wall-display/urls", urls);
     settings.setValue("wall-display/interval", spinBox->value());
 
