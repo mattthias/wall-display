@@ -9,7 +9,11 @@ Build:
         qmake
         make
 
-Configure the application in $HOME/.config/endocode/wall-display.conf:
+Configure the application with the settings dialog
+
+![settings dialog](https://raw.githubusercontent.com/mattthias/wall-display/master/settings.png)
+
+Or edit the config file in $HOME/.config/endocode/wall-display.conf:
 
         [wall-display]
         urls = http://endocode.com, http://heise.de
