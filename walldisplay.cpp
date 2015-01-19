@@ -91,8 +91,10 @@ bool WallDisplay::eventFilter(QObject *obj, QEvent *event) {
 
 void WallDisplay::showAbout(){
     QMessageBox::about(this, tr("About wall-display"),
-                 tr("Wall-Display\n"
-                    "Written by Matthias Schmitz <matthias@sigxcpu.org"));
+                 tr("Wall-Display was written by\n"
+                    "Matthias Schmitz <matthias@sigxcpu.org>\n"
+                    "Nikolas Sepos <nikolas@endocode.com>\n"
+                    "Gerald Schmidt"));
 }
 
 void WallDisplay::showSettingsDialog() {
