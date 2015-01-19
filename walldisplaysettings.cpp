@@ -1,19 +1,20 @@
 #include "walldisplaysettings.h"
 #include "ui_walldisplaysettings.h"
 
-WallDisplaySettings::WallDisplaySettings(QWidget *parent) :
+WallDisplaySettings::WallDisplaySettings(QSettings *settings, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::WallDisplaySettings)
 {
     ui->setupUi(this);
 
-    QSettings settings;
+    settings_ = settings;
     QList<QString> urls;
     int changeUrlInterval;
 
+
     /* read urls and cycle interval from the settings file */
-    urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
-    changeUrlInterval = settings.value("wall-display/interval", 10).toInt();
+    urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
+    changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
 
     QListWidget *listWidget = ui->listWidget;
     QSpinBox *spinBox = ui->spinBox;
@@ -49,7 +50,6 @@ void WallDisplaySettings::on_removeUrl_clicked()
 
 void WallDisplaySettings::on_buttonBox_accepted()
 {
-    QSettings settings;
     QListWidget *listWidget = ui->listWidget;
     QSpinBox *spinBox = ui->spinBox;
     QStringList urls;
@@ -58,9 +58,9 @@ void WallDisplaySettings::on_buttonBox_accepted()
         urls << listWidget->item(i)->text();
     }
     if ( urls.isEmpty() ) {
-        urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
+        urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
     }
-    settings.setValue("wall-display/urls", urls);
-    settings.setValue("wall-display/interval", spinBox->value());
+    settings_->setValue("wall-display/urls", urls);
+    settings_->setValue("wall-display/interval", spinBox->value());
 
 }

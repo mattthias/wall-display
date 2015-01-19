@@ -16,7 +16,7 @@ class WallDisplaySettings : public QDialog
     Q_OBJECT
 
 public:
-    explicit WallDisplaySettings(QWidget *parent = 0);
+    explicit WallDisplaySettings(QSettings *settings, QWidget *parent = 0);
     ~WallDisplaySettings();
 
 private slots:
@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::WallDisplaySettings *ui;
+    QSettings *settings_;
 
 };
 

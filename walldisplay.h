@@ -22,6 +22,7 @@ public:
 
 private:
     Ui::WallDisplay *ui;
+    QSettings *settings_;
 
 private Q_SLOTS:
     void changeUrl();

@@ -28,9 +28,9 @@ WallDisplay::WallDisplay(QWidget *parent) :
     connect(ui->action_settings, SIGNAL(triggered()), this, SLOT(showSettingsDialog()));
 
     /* read urls and cycle interval from the settings file */
-    QSettings settings;
-    urls = settings.value("wall-display/urls","http://endocode.com").toStringList();
-    changeUrlInterval = settings.value("wall-display/interval", 10).toInt();
+    settings_ = new QSettings();
+    urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
+    changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
 
     /* Load the first url */
     ui->webView->setUrl(QUrl(urls[0]));
@@ -45,6 +45,7 @@ WallDisplay::WallDisplay(QWidget *parent) :
 WallDisplay::~WallDisplay()
 {
     delete ui;
+    delete settings_;
 }
 
 /* triggered by the timer change the shown url */
@@ -96,6 +97,10 @@ void WallDisplay::showAbout(){
 
 void WallDisplay::showSettingsDialog() {
     qDebug() << "showSettingsDialog aufgerufen";
-    WallDisplaySettings *settingsdialog = new WallDisplaySettings;
-    settingsdialog->exec();
+    WallDisplaySettings *settingsdialog = new WallDisplaySettings(settings_);
+    int retval = settingsdialog->exec();
+    if ( retval == QDialog::Accepted) {
+        urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
+        changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
+    }
 }
