@@ -5,6 +5,8 @@
 #include <QTimer>
 #include <QUrl>
 #include <QSettings>
+#include <QWebSettings>
+#include <QDesktopServices>
 #include <QDebug>
 #include <QKeyEvent>
 
