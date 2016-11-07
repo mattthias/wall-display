@@ -35,6 +35,17 @@ WallDisplay::WallDisplay(QWidget *parent) :
     /* Load the first url */
     ui->webView->setUrl(QUrl(urls[0]));
 
+    QString homePath;
+    #if QT_VERSION >= 0x050000
+      homePath = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+    #else
+      homePath = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
+    #endif
+    QWebSettings* webSettings = ui->webView->settings();
+    webSettings->setAttribute(QWebSettings::LocalStorageEnabled, true);
+    webSettings->setOfflineStoragePath(homePath);
+    webSettings->enablePersistentStorage(homePath);
+
     /* start the timer with interval */
     connect(timer, SIGNAL(timeout()), this, SLOT(changeUrl()));
     timer->start(changeUrlInterval * 1000);
