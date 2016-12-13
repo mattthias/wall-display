@@ -1,0 +1,5 @@
+wall-display (0.1.0-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #XXXXXX)
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Tue, 13 Dec 2016 12:02:02 +0100

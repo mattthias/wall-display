@@ -1,0 +1,15 @@
+Source: wall-display
+Priority: optional
+Maintainer: Matthias Schmitz <matthias@sigxcpu.org>
+Build-Depends: debhelper (>= 9),
+               libqt4-dev,
+               libqtwebkit-dev,
+               qt4-qmake
+Standards-Version: 3.9.6
+
+Package: wall-display
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Cycle through full screen websites 
+ wall-display has the following features:
+  * cycle through the configured website
