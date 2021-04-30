@@ -3,9 +3,10 @@
 #include "walldisplaysettings.h"
 #include "ui_walldisplaysettings.h"
 
+
+QTimer *timer = new QTimer();
 QList<QString> urls;
 int changeUrlInterval;
-QTimer *timer = new QTimer();
 
 WallDisplay::WallDisplay(QWidget *parent) :
     QMainWindow(parent),
@@ -29,8 +30,8 @@ WallDisplay::WallDisplay(QWidget *parent) :
 
     /* read urls and cycle interval from the settings file */
     settings_ = new QSettings();
-    changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
     QStringList urls = settings_->value("wall-display/urls","https://github.com/mattthias/wall-display/wiki").toStringList();
+    int changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
 
     /* Load the first url */
     ui->webView->setUrl(QUrl(urls[0]));
@@ -38,8 +39,6 @@ WallDisplay::WallDisplay(QWidget *parent) :
     /* start the timer with interval */
     connect(timer, SIGNAL(timeout()), this, SLOT(changeUrl()));
     timer->start(changeUrlInterval * 1000);
-
-
 }
 
 WallDisplay::~WallDisplay()
@@ -73,8 +72,8 @@ void WallDisplay::stopInterval() {
 /* on a key press unhide the menubar */
 bool WallDisplay::eventFilter(QObject *obj, QEvent *event) {
     if ( event->type() == QEvent::KeyPress ){
-            QKeyEvent *key = static_cast<QKeyEvent *>(event);
-            qDebug() << "Key " << key->key() << " pressed in " << obj->objectName();
+            //QKeyEvent *key = static_cast<QKeyEvent *>(event);
+            //qDebug() << "Key " << key->key() << " pressed in " << obj->objectName();
             if ( ui->menuBar->isHidden() ) {
                 ui->menuBar->setVisible(true);
             }

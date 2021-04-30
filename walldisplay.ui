@@ -25,7 +25,16 @@
     </font>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <property name="margin">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
      <number>0</number>
     </property>
     <property name="spacing">
@@ -53,7 +62,7 @@
      <x>0</x>
      <y>0</y>
      <width>1149</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -128,14 +137,14 @@
   <customwidget>
    <class>QWebView</class>
    <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
+   <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
  <resources/>
  <connections>
   <connection>
    <sender>action_Quit</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>WallDisplay</receiver>
    <slot>close()</slot>
    <hints>
@@ -151,7 +160,7 @@
   </connection>
   <connection>
    <sender>actionHide_menu</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>menuBar</receiver>
    <slot>hide()</slot>
    <hints>

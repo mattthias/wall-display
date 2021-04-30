@@ -1,8 +1,9 @@
 wall-display
 ============
-To compile the application (eg. on a Raspberry Pi with Raspbian/Wheezy) install QT4-dev:
 
-        apt-get install libqt4-dev libqtwebkit-dev qt4-qmake
+To compile the application on a Raspberry Pi with Rasbian install the Qt5 develpment tools:
+
+        sudo apt install qt5-default
 
 Build:
 

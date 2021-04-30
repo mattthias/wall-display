@@ -17,7 +17,7 @@ class WallDisplay : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit WallDisplay(QWidget *parent = 0);
+    explicit WallDisplay(QWidget *parent = nullptr);
     ~WallDisplay();
 
 private:
@@ -34,5 +34,9 @@ private Q_SLOTS:
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 };
+
+extern QList<QString> urls;
+extern int changeUrlInterval;
+extern QTimer *timer;
 
 #endif // WALLDISPLAY_H
