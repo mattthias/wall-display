@@ -13,7 +13,7 @@ WallDisplaySettings::WallDisplaySettings(QSettings *settings, QWidget *parent) :
 
 
     /* read urls and cycle interval from the settings file */
-    urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
+    urls = settings_->value("wall-display/urls","https://github.com/mattthias/wall-display/wiki").toStringList();
     changeUrlInterval = settings_->value("wall-display/interval", 10).toInt();
 
     QListWidget *listWidget = ui->listWidget;
@@ -58,7 +58,7 @@ void WallDisplaySettings::on_buttonBox_accepted()
         urls << listWidget->item(i)->text();
     }
     if ( urls.isEmpty() ) {
-        urls = settings_->value("wall-display/urls","http://endocode.com").toStringList();
+        urls = settings_->value("wall-display/urls","https://github.com/mattthias/wall-display/wiki").toStringList();
     }
     settings_->setValue("wall-display/urls", urls);
     settings_->setValue("wall-display/interval", spinBox->value());

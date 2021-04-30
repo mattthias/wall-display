@@ -4,8 +4,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QCoreApplication::setOrganizationName("endocode");
-    QCoreApplication::setOrganizationDomain("endocode.com");
+    QCoreApplication::setOrganizationName("port4949");
+    QCoreApplication::setOrganizationDomain("port4949.net");
     QCoreApplication::setApplicationName("wall-display");
 
     WallDisplay w;
